@@ -1,0 +1,14 @@
+from socket import *
+import re, uuid
+from datetime import datetime, timedelta
+import sys
+
+serverName = 'localhost'
+serverPort = 18000
+clientSocket = socket(AF_INET, SOCK_DGRAM)
+
+message = "admin"
+clientSocket.sendto(message.encode(),(serverName, serverPort))
+
+modifiedMessage, serverAddress = clientSocket.recvfrom(2048)
+print(modifiedMessage.decode())
